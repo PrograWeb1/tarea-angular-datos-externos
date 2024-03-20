@@ -1,0 +1,14 @@
+<div *ngIf="cargando">Cargando...</div>
+<div *ngIf="!cargando" class="container mb-5">
+    <section class="row">
+        <div class="card-personaje col-12 col-sm-6 col-md-4 " *ngFor="let character of characters">
+            <h3 class="text-center">{{ character.name }}</h3>
+            <img [src]="character.image" alt="{{ character.name }}">
+            <div class="fw-bold d-flex flex-column flex-start">
+                <p class="mb-0">Status: {{character.status}}</p>
+                <p>Species: {{character.species}}</p>
+                <p></p>
+            </div>
+          </div>
+    </section>
+</div>

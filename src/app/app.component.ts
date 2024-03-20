@@ -1,21 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ApiRickAndMortyService } from './api-rick-and-morty.service';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router, RouterOutlet, RouterLink, NavigationEnd} from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule, RouterLink],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'datos-externos';
+  esRutaLocations: boolean = false; // Declarar la propiedad aquí
 
-  constructor (private RickAndMorty: ApiRickAndMortyService){
-
-  }
-  ngOnInit(): void {
-      this.RickAndMorty.getPersonajes()
+  constructor(private router: Router) {
+    // Suscribirse a los eventos de cambio de ruta
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.esRutaLocations = this.router.url === '/locations';
+      }
+    });
   }
 }
+

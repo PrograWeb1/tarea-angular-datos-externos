@@ -1,0 +1,12 @@
+nav{
+    background-color: black;
+    height: 20vh;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+nav>div>svg:hover{
+    cursor: pointer;
+}

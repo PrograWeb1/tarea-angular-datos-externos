@@ -1,0 +1,14 @@
+.card-personaje{
+    display: flex;
+    height: 45vh;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+
+img{
+    border-radius: 15px;
+    width: 50%;
+}

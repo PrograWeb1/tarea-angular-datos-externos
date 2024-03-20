@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ICharacters } from './interfaces/ICharacters';
+import { ILocations } from './interfaces/ILocations';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +12,14 @@ export class ApiRickAndMortyService {
 
   constructor( private  cliente: HttpClient) { }
 
-  getPersonajes(){
-    let url = `${this.urlBase}/character`
-    this.cliente.get(url).subscribe(respuesta => console.log(respuesta))
+  getCharacters(): Observable<ICharacters>{
+    let url = `${this.urlBase}/character`;
+    return this.cliente.get<ICharacters>(url);
   }
+
+  getLocations():Observable<ILocations>{
+    let url = `${this.urlBase}/location`;
+    return this.cliente.get<ILocations>(url);
+  }
+
 }
